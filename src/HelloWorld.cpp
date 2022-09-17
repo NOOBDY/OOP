@@ -1,5 +1,3 @@
-#include <gtest/gtest.h>
-
 #include "HelloWorld.hpp"
 
 std::string HelloWorld() {
