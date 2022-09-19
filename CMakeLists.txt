@@ -33,6 +33,9 @@ add_executable(OOP
 target_include_directories(OOP PRIVATE
     ${INCLUDE_DIRS}
 )
+target_compile_options(OOP PRIVATE
+    -Wall -pedantic
+)
 
 add_executable(ut_all
     test/ut_main.cpp
@@ -44,6 +47,9 @@ target_link_libraries(ut_all
 )
 target_include_directories(ut_all PRIVATE
     ${INCLUDE_DIRS}
+)
+target_compile_options(OOP PRIVATE
+    -Wall -pedantic
 )
 include(GoogleTest)
 gtest_discover_tests(ut_all)
