@@ -35,14 +35,14 @@ set(INCLUDE_DIRS
     .
 )
 
-add_executable(OOP
+add_executable(HelloWorld
     main.cpp
     ${SRC}
 )
-target_include_directories(OOP PRIVATE
+target_include_directories(HelloWorld PRIVATE
     ${INCLUDE_DIRS}
 )
-target_compile_options(OOP PRIVATE
+target_compile_options(HelloWorld PRIVATE
     -Wall -pedantic
 )
 
@@ -57,7 +57,7 @@ target_link_libraries(ut_all
 target_include_directories(ut_all PRIVATE
     ${INCLUDE_DIRS}
 )
-target_compile_options(OOP PRIVATE
+target_compile_options(ut_all PRIVATE
     -Wall -pedantic
 )
 include(GoogleTest)
