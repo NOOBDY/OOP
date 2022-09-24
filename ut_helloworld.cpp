@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "HelloWorld.hpp"
+#include "HelloWorld.h"
 
-TEST(HELLO_WORLD, HelloWorld) {
+TEST(HELLOWORLD, HelloWorld) {
     std::string output = HelloWorld();
     std::string target = "Hello World\n";
 
