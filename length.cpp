@@ -36,3 +36,15 @@ double length(double v[], int dim) {
 double length(MathVector &m) {
     return m.GetLength();
 }
+
+double dot(MathVector v1, MathVector v2) {
+    if (v1.GetDim() != v2.GetDim())
+        return -1;
+
+    double sum = 0;
+
+    for (int i = 0; i < v1.GetDim(); ++i)
+        sum += v1[i] * v2[i];
+
+    return sum;
+}

@@ -29,6 +29,7 @@ set(SRC
 set(UT_SRC
     ut_helloworld.cpp
     ut_length.cpp
+    ut_mathvector.cpp
 )
 
 set(INCLUDE_DIRS

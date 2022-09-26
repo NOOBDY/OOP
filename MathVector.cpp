@@ -11,9 +11,8 @@ MathVector::MathVector(const int dim, const double arr[]) {
 double MathVector::GetLength() const {
     double res = 0;
 
-    for (const auto &num : m_Vector) {
+    for (const auto &num : m_Vector)
         res += pow(num, 2);
-    }
 
     return sqrt(res);
 }

@@ -13,6 +13,7 @@ public:
 
     double operator[](int i) { return m_Vector[i]; }
     double GetLength() const;
+    int GetDim() const { return m_Vector.size(); }
 
     std::vector<double> &GetNums() { return m_Vector; }
     const std::vector<double> &GetNums() const { return m_Vector; }
