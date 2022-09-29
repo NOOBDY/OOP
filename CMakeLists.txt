@@ -17,19 +17,13 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 set(SRC
-    HelloWorld.cpp
-    MathVector.cpp
-    length.cpp
-
     HelloWorld.h
     MathVector.h
     length.h
 )
 
 set(UT_SRC
-    ut_helloworld.cpp
-    ut_length.cpp
-    ut_mathvector.cpp
+    ut_main.cpp
 )
 
 set(INCLUDE_DIRS
@@ -37,7 +31,8 @@ set(INCLUDE_DIRS
 )
 
 add_executable(HelloWorld
-    main.cpp
+    HelloWorld.cpp
+
     ${SRC}
 )
 target_include_directories(HelloWorld PRIVATE

@@ -1,5 +1,10 @@
+#include <iostream>
 #include "HelloWorld.h"
 
-std::string HelloWorld() {
-    return std::string("Hello World\n");
+// using namespace std;
+
+int main()
+{
+    std::cout << print() << '\n';
+    return 0;
 }

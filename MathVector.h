@@ -1,25 +1,47 @@
-#ifndef MATH_VECTOR_H
-#define MATH_VECTOR_H
+#ifndef MATH_VECTOR
+#define MATH_VECTOR
 
-#include <vector>
+#include <cmath>
 
-class MathVector {
-public:
-    MathVector() = default;
-    MathVector(const std::vector<double> vec);
-    MathVector(const int dim, const double arr[]);
-
-    ~MathVector() = default;
-
-    double operator[](int i) { return m_Vector[i]; }
-    double GetLength() const;
-    int GetDim() const { return m_Vector.size(); }
-
-    std::vector<double> &GetNums() { return m_Vector; }
-    const std::vector<double> &GetNums() const { return m_Vector; }
-
+class MathVector
+{
 private:
-    std::vector<double> m_Vector;
+    int _dim;
+    double *_arr; // uncertain size array
+public:
+    // Constructor
+    MathVector() // default constructor
+    {
+        _dim = 0;
+        _arr = NULL;
+    }
+    MathVector(int dim, double *arr)
+    {
+        _dim = dim;
+        _arr = new double[_dim];
+        for (int i = 0; i < _dim; i++)
+        {
+            _arr[i] = arr[i];
+        }
+    }
+    // getter
+    int getDim()
+    {
+        return _dim;
+    }
+    double getIndex(int i)
+    {
+        return _arr[i];
+    }
+    double length()
+    {
+        double sum = 0;
+        for (int i = 0; i < _dim; i++)
+        {
+            sum += pow(_arr[i], 2);
+        }
+        return sqrt(sum);
+    }
 };
 
 #endif
