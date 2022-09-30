@@ -1,9 +1,5 @@
 .PHONY: all
-all: hello ut
-
-hello: setup
-	cmake --build build --target HelloWorld
-	cp ./build/HelloWorld .
+all: ut
 
 ut: setup
 	cmake --build build --target ut_all
