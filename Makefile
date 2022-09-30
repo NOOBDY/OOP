@@ -2,13 +2,11 @@
 all: ut
 
 ut: setup
-	cmake --build build --target ut_all
-	cp ./build/ut_all .
+	cmake --build bin --target ut_all
 
 setup:
-	cmake -B build
+	cmake -B bin
 
 .PHONY: clean
 clean:
-	rm -f HelloWorld
-	rm -f ut_all
+	rm bin -rf
