@@ -9,7 +9,7 @@ int max_dv(const int n, const int array[]) {
         return -1;
 
     for (int i = 0; i < n; ++i) {
-        if (array[i] < 0)
+        if (array[i] < 0 || array[i] > 100)
             return -1;
     }
 
