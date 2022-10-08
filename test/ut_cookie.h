@@ -5,84 +5,105 @@
 
 #include "../src/cookie.h"
 
-TEST(MAX_DV, even1) {
-    const int n = 4;
-    const int array[] = {1, 2, 3, 4};
+TEST(COOKIE, normal1) {
+    bool **grid = create_grid();
 
-    int target = 6;
-    int output = max_dv(n, array);
+    int x = check_x(grid);
+    int y = check_y(grid);
 
-    ASSERT_EQ(target, output);
+    ASSERT_EQ(x, 0);
+    ASSERT_EQ(y, 9);
+
+    placeTop(grid);
+    placeRight(grid);
+
+    for (int i = 0; i < 5; ++i)
+        placeTop(grid);
+
+    int colCount = calcColumn(grid, 1);
+    int rowCount = calcRow(grid, 4);
+
+    ASSERT_EQ(colCount, 6);
+    ASSERT_EQ(rowCount, 1);
+
+    delete_grid(grid);
 }
 
-TEST(MAX_DV, even2) {
-    const int n = 6;
-    const int array[] = {1, 3, 1, 2, 5, 4};
+TEST(COOKIE, normal2) {
+    bool **grid = create_grid();
 
-    int target = 9;
-    int output = max_dv(n, array);
+    for (int i = 0; i < 6; ++i) {
+        placeRight(grid);
+        placeTop(grid);
+    }
 
-    ASSERT_EQ(target, output);
+    int colCount = calcColumn(grid, 3);
+
+    ASSERT_EQ(colCount, 2);
+
+    delete_grid(grid);
 }
 
-TEST(MAX_DV, odd1) {
-    const int n = 3;
-    const int array[] = {2, 7, 4};
+TEST(COOKIE, place_oor1) {
+    bool **grid = create_grid();
 
-    int target = 7;
-    int output = max_dv(n, array);
+    auto lambda = [](bool **grid) {
+        for (int i = 0; i < 20; ++i)
+            placeTop(grid);
+    };
 
-    ASSERT_EQ(target, output);
+    ASSERT_THROW(lambda(grid), std::string);
+
+    delete_grid(grid);
 }
 
-TEST(MAX_DV, odd2) {
-    const int n = 5;
-    const int array[] = {2, 7, 4, 1, 8};
+TEST(COOKIE, place_oor2) {
+    bool **grid = create_grid();
 
-    int target = 14;
-    int output = max_dv(n, array);
+    auto lambda = [](bool **grid) {
+        for (int i = 0; i < 10; ++i)
+            placeRight(grid);
+    };
 
-    ASSERT_EQ(target, output);
+    ASSERT_THROW(lambda(grid), std::string);
+
+    delete_grid(grid);
 }
 
-TEST(MAX_DV, neg_array_val1) {
-    const int n = 4;
-    const int array[] = {1, -2, 3, 4};
+TEST(COOKIE, query_oor1) {
+    bool **grid = create_grid();
 
-    int target = -1;
-    int output = max_dv(n, array);
+    int rowCount = calcRow(grid, 420);
 
-    ASSERT_EQ(target, output);
+    ASSERT_EQ(rowCount, -1);
+
+    delete_grid(grid);
 }
 
-TEST(MAX_DV, neg_array_val2) {
-    const int n = 3;
-    const int array[] = {3, 1, -5};
+TEST(COOKIE, query_oor2) {
+    bool **grid = create_grid();
 
-    int target = -1;
-    int output = max_dv(n, array);
+    int colCount = calcColumn(grid, 69);
 
-    ASSERT_EQ(target, output);
+    ASSERT_EQ(colCount, -1);
+
+    delete_grid(grid);
 }
 
-TEST(MAX_DV, neg_array_size1) {
-    const int n = -2;
-    const int array[] = {1, 5};
+TEST(COOKIE, ten_times) {
+    bool **grid = create_grid();
 
-    int target = -1;
-    int output = max_dv(n, array);
+    for (int i = 0; i < 5; ++i)
+        placeTop(grid);
 
-    ASSERT_EQ(target, output);
-}
+    for (int i = 0; i < 5; ++i)
+        placeRight(grid);
 
-TEST(MAX_DV, neg_array_size2) {
-    const int n = -3;
-    const int array[] = {1, 5, 2};
+    int rowCount = calcRow(grid, 4);
 
-    int target = -1;
-    int output = max_dv(n, array);
+    ASSERT_EQ(rowCount, 6);
 
-    ASSERT_EQ(target, output);
+    delete_grid(grid);
 }
 
 #endif
