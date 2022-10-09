@@ -5,6 +5,24 @@
 
 #include "../src/cookie.h"
 
+bool **create_grid() {
+    bool **grid = new bool *[GRID_SIZE];
+
+    for (int i = 0; i < GRID_SIZE; ++i)
+        grid[i] = new bool[GRID_SIZE]{0};
+
+    grid[9][0] = true;
+
+    return grid;
+}
+
+void delete_grid(bool **grid) {
+    for (int i = 0; i < GRID_SIZE; ++i)
+        delete[] grid[i];
+
+    delete[] grid;
+}
+
 TEST(COOKIE, normal1) {
     bool **grid = create_grid();
 

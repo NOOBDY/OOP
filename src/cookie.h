@@ -6,24 +6,6 @@
 
 #define GRID_SIZE 10
 
-bool **create_grid() {
-    bool **grid = new bool *[GRID_SIZE];
-
-    for (int i = 0; i < GRID_SIZE; ++i)
-        grid[i] = new bool[GRID_SIZE]{0};
-
-    grid[9][0] = true;
-
-    return grid;
-}
-
-void delete_grid(bool **grid) {
-    for (int i = 0; i < GRID_SIZE; ++i)
-        delete[] grid[i];
-
-    delete[] grid;
-}
-
 /** Return the x-coordinate of the latest of cookie. */
 int check_x(bool **grid) {
     for (int i = 0; i < GRID_SIZE; ++i)
