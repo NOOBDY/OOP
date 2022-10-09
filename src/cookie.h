@@ -48,7 +48,7 @@ void placeTop(bool **grid) {
     int y = check_y(grid);
 
     /* Check when you place cookie, it will out of bound or not. */
-    if (x >= 9 || y <= 0)
+    if (y <= 0)
         throw std::string("out of range");
 
     /* Place cookie from the top of current cookie. */
@@ -61,7 +61,7 @@ void placeRight(bool **grid) {
     int y = check_y(grid);
 
     /* Check when you place cookie, it will out of bound or not. */
-    if (x >= 9 || y <= 0)
+    if (x >= 9)
         throw std::string("out of range");
 
     /* Place cookie from the right of current cookie. */
