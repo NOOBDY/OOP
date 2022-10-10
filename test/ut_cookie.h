@@ -65,12 +65,12 @@ TEST(COOKIE, normal2) {
 TEST(COOKIE, place_oor1) {
     bool **grid = create_grid();
 
-    auto lambda = [](bool **grid) {
-        for (int i = 0; i < 20; ++i)
-            placeTop(grid);
-    };
-
-    ASSERT_THROW(lambda(grid), std::string);
+    ASSERT_THROW(
+        [](bool **grid) {
+            for (int i = 0; i < 20; ++i)
+                placeTop(grid);
+        }(grid),
+        std::string);
 
     delete_grid(grid);
 }
@@ -78,12 +78,12 @@ TEST(COOKIE, place_oor1) {
 TEST(COOKIE, place_oor2) {
     bool **grid = create_grid();
 
-    auto lambda = [](bool **grid) {
-        for (int i = 0; i < 10; ++i)
-            placeRight(grid);
-    };
-
-    ASSERT_THROW(lambda(grid), std::string);
+    ASSERT_THROW(
+        [](bool **grid) {
+            for (int i = 0; i < 10; ++i)
+                placeRight(grid);
+        }(grid),
+        std::string);
 
     delete_grid(grid);
 }
