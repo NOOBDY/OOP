@@ -7,12 +7,12 @@
 class Drink {
 public:
     Drink() = default;
-    Drink(const std::string name, const float sweetnessLevel,
+    Drink(const std::string name, const double sweetnessLevel,
           const std::vector<std::string> toppings = {});
     ~Drink() = default;
 
     std::string getName() const;
-    float getSweetnessLevel() const;
+    double getSweetnessLevel() const;
     std::string getToppingByIndex(const std::size_t index) const;
     std::size_t getToppingCount() const;
 
@@ -20,11 +20,11 @@ public:
 
 private:
     std::string m_Name = "";
-    float m_SweetnessLevel = -1;
+    double m_SweetnessLevel = -1;
     std::vector<std::string> m_Toppings = {};
 };
 
-Drink::Drink(const std::string name, const float sweetnessLevel,
+Drink::Drink(const std::string name, const double sweetnessLevel,
              const std::vector<std::string> toppings) {
     if (name.size() < 4)
         throw std::string("Invalid Name");
@@ -44,7 +44,7 @@ std::string Drink::getName() const {
     return m_Name;
 }
 
-float Drink::getSweetnessLevel() const {
+double Drink::getSweetnessLevel() const {
     if (m_SweetnessLevel == -1)
         throw std::string("Empty Sweetness Level");
 
