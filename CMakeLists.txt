@@ -17,13 +17,13 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 set(SRC
-    src/cookie.h
+    src/drink.h
 )
 
 set(UT_SRC
     test/ut_main.cpp
 
-    test/ut_cookie.h
+    test/ut_drink.h
 )
 
 set(INCLUDE_DIRS
