@@ -1,0 +1,9 @@
+version: '3'
+services:
+  memcheck:
+    build: .
+    container_name: valgrind
+    volumes:
+      - $PWD/src/:/opt/app/src/
+      - $PWD/test/:/opt/app/test/
+      - $PWD/CMakeLists.txt:/opt/app/CMakeLists.txt
