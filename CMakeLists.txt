@@ -4,6 +4,8 @@ enable_testing()
 
 set(CMAKE_CXX_STANDARD 11)
 
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+
 #### GTest
 # reference: https://google.github.io/googletest/quickstart-cmake.html
 include(FetchContent)
@@ -46,3 +48,11 @@ target_compile_options(ut_all PRIVATE
 )
 include(GoogleTest)
 gtest_discover_tests(ut_all)
+
+include(CodeCoverage)
+append_coverage_compiler_flags()
+setup_target_for_coverage_gcovr_html(
+    NAME ut_all_coverage
+    DEPENDENCIES ut_all
+    EXCLUDE build/_deps/* test/*
+)
