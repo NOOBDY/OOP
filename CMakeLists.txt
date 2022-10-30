@@ -20,12 +20,14 @@ FetchContent_MakeAvailable(googletest)
 
 set(SRC
     src/drink.h
+    src/topping.h
 )
 
 set(UT_SRC
     test/ut_main.cpp
 
     test/ut_drink.h
+    test/ut_topping.h
 )
 
 set(INCLUDE_DIRS
@@ -50,9 +52,19 @@ include(GoogleTest)
 gtest_discover_tests(ut_all)
 
 include(CodeCoverage)
+set(CODE_COVERAGE_VERBOSE ON)
+set(COVERAGE_EXCLUDE
+    ${PROJECT_SOURCE_DIR}/build/_deps/*
+    ${PROJECT_SOURCE_DIR}/test/*
+)
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+    set(GCOVR_ADDITIONAL_ARGS
+        --gcov-executable "llvm-cov gcov"
+    )
+endif()
 append_coverage_compiler_flags()
 setup_target_for_coverage_gcovr_html(
     NAME ut_all_coverage
     DEPENDENCIES ut_all
-    EXCLUDE build/_deps/* test/*
+    EXCLUDE ${COVERAGE_EXCLUDE}
 )
