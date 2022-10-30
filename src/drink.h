@@ -4,36 +4,46 @@
 #include <string>
 #include <vector>
 
+#include "topping.h"
+
 class Drink {
 public:
     Drink() = default;
-    Drink(const std::string name, const double sweetnessLevel,
-          const std::vector<std::string> toppings = {});
+    Drink(const std::string name, const double sweetnessLevel, const int price,
+          const std::vector<Topping> toppings = {});
     ~Drink() = default;
 
     std::string getName() const;
     double getSweetnessLevel() const;
-    std::string getToppingByIndex(const std::size_t index) const;
+    int getPrice() const;
+    Topping getToppingByIndex(const std::size_t index) const;
     std::size_t getToppingCount() const;
 
-    void addTopping(const std::string topping);
+    void addTopping(const Topping topping);
+
+    Drink operator=(const Drink &other);
 
 private:
     std::string m_Name = "";
     double m_SweetnessLevel = -1;
-    std::vector<std::string> m_Toppings = {};
+    int m_Price = -1;
+    std::vector<Topping> m_Toppings = {};
 };
 
 Drink::Drink(const std::string name, const double sweetnessLevel,
-             const std::vector<std::string> toppings) {
+             const int price, const std::vector<Topping> toppings) {
     if (name.size() < 4)
         throw std::string("Invalid Name");
 
-    if (sweetnessLevel > 1 || sweetnessLevel < 0)
+    if (sweetnessLevel >= 1 || sweetnessLevel <= 0)
         throw std::string("Invalid Sweetness Level");
+
+    if (price <= 0)
+        throw std::string("Invalid Price");
 
     m_Name = name;
     m_SweetnessLevel = sweetnessLevel;
+    m_Price = price;
     m_Toppings = toppings;
 }
 
@@ -51,7 +61,14 @@ double Drink::getSweetnessLevel() const {
     return m_SweetnessLevel;
 }
 
-std::string Drink::getToppingByIndex(const std::size_t index) const {
+int Drink::getPrice() const {
+    if (m_Price == -1)
+        throw std::string("Empty Price");
+
+    return m_Price;
+}
+
+Topping Drink::getToppingByIndex(const std::size_t index) const {
     std::size_t size = getToppingCount();
 
     if (index >= size)
@@ -64,8 +81,23 @@ std::size_t Drink::getToppingCount() const {
     return m_Toppings.size();
 }
 
-void Drink::addTopping(const std::string topping) {
+void Drink::addTopping(const Topping topping) {
     m_Toppings.push_back(topping);
+    m_SweetnessLevel += topping.getSweetnessLevel();
+    m_Price += topping.getPrice();
+}
+
+Drink Drink::operator=(const Drink &other) {
+    if (this != &other) {
+        m_Name = other.getName();
+        m_SweetnessLevel = other.getSweetnessLevel();
+        m_Price = other.getPrice();
+
+        for (std::size_t i = 0; i < other.getToppingCount(); ++i)
+            m_Toppings.push_back(other.getToppingByIndex(i));
+    }
+
+    return *this;
 }
 
 #endif

@@ -5,84 +5,78 @@
 
 #include "../src/drink.h"
 
-TEST(DRINK, constructor1) {
-    ASSERT_THROW(Drink drink("cum", .8f), std::string);
+class DrinkTest : public ::testing::Test {
+public:
+    Drink normalDrink =
+        Drink("pee pee poo poo", 0.5, 100, {Topping("yoooo", 0.1, 40)});
+    Drink emptyDrink;
+};
+
+TEST_F(DrinkTest, NormalName) {
+    const std::string target = "pee pee poo poo";
+
+    ASSERT_EQ(normalDrink.getName(), target);
 }
 
-TEST(DRINK, constructor2) {
-    ASSERT_THROW(Drink drink("Pißwasser", 6.9f), std::string);
+TEST_F(DrinkTest, NormalSweetnessLevel) {
+    const double target = 0.5;
+
+    ASSERT_NEAR(normalDrink.getSweetnessLevel(), target, 0.01f);
 }
 
-TEST(DRINK, get_name1) {
-    Drink drink("Jesus Juice", 0.2f);
+TEST_F(DrinkTest, NormalPrice) {
+    const int target = 100;
 
-    std::string target = "Jesus Juice";
-
-    ASSERT_EQ(drink.getName(), target);
+    ASSERT_EQ(normalDrink.getPrice(), target);
 }
 
-TEST(DRINK, get_name2) {
-    Drink drink;
+TEST_F(DrinkTest, NormalAddTopping) {
+    normalDrink.addTopping(Topping("weed", 0.06, 2));
 
-    ASSERT_THROW(drink.getName(), std::string);
+    std::size_t targetCount = 2;
+
+    ASSERT_EQ(normalDrink.getToppingCount(), targetCount);
+
+    std::string targetName = "weed";
+
+    ASSERT_EQ(normalDrink.getToppingByIndex(1).getName(), targetName);
 }
 
-TEST(DRINK, get_sweetness_level1) {
-    Drink drink("Kool Aid", 0.7f);
+TEST_F(DrinkTest, NormalDrinkCopyAssignment) {
+    Drink targetDrink;
+    targetDrink = normalDrink;
 
-    ASSERT_NEAR(drink.getSweetnessLevel(), 0.7f, 0.001f);
+    std::size_t targetCount = 1;
+
+    ASSERT_EQ(targetDrink.getToppingCount(), targetCount);
 }
 
-TEST(DRINK, get_sweetness_level2) {
-    Drink drink;
-
-    ASSERT_THROW(drink.getSweetnessLevel(), std::string);
+TEST_F(DrinkTest, EmptyName) {
+    ASSERT_THROW(emptyDrink.getName(), std::string);
 }
 
-TEST(DRINK, add_topping1) {
-    Drink drink("Olive Oil", 0.0f);
-
-    ASSERT_NO_THROW(drink.addTopping("Spaghetti"));
+TEST_F(DrinkTest, EmptySweetnessLevel) {
+    ASSERT_THROW(emptyDrink.getSweetnessLevel(), std::string);
 }
 
-TEST(DRINK, add_topping2) {
-    Drink drink("Sex on the Beach", 0.4f);
-
-    drink.addTopping("Umbrella");
-
-    ASSERT_EQ(drink.getToppingCount(), 1);
+TEST_F(DrinkTest, EmptyPrice) {
+    ASSERT_THROW(emptyDrink.getPrice(), std::string);
 }
 
-TEST(DRINK, get_topping_by_index1) {
-    Drink drink("Szechuan Sauce", 0.4f);
-
-    drink.addTopping("Fries");
-    drink.addTopping("Nugget");
-
-    std::string target = "Nugget";
-
-    ASSERT_EQ(drink.getToppingByIndex(1), target);
+TEST_F(DrinkTest, InvalidTopping) {
+    ASSERT_THROW(emptyDrink.getToppingByIndex(1), std::string);
 }
 
-TEST(DRINK, get_topping_by_index2) {
-    Drink drink;
-
-    ASSERT_THROW(drink.getToppingByIndex(420), std::string);
+TEST(Drink, InvalidName) {
+    ASSERT_THROW(Drink("", 0.4, 50), std::string);
 }
 
-TEST(DRINK, get_topping_count1) {
-    Drink drink;
-
-    ASSERT_EQ(drink.getToppingCount(), 0);
+TEST(Drink, InvalidSweetnessLevel) {
+    ASSERT_THROW(Drink("long boi", 420.69, 50), std::string);
 }
 
-TEST(DRINK, get_topping_count2) {
-    Drink drink("QQㄋㄟㄋㄟ好喝到咩噗茶", 0.5f);
-
-    drink.addTopping("Bubble");
-    drink.addTopping("Ice");
-
-    ASSERT_EQ(drink.getToppingCount(), 2);
+TEST(Drink, InvalidPrice) {
+    ASSERT_THROW(Drink("even looonger boi", 0.4, -10), std::string);
 }
 
 #endif
