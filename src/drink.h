@@ -93,6 +93,8 @@ Drink Drink::operator=(const Drink &other) {
         m_SweetnessLevel = other.getSweetnessLevel();
         m_Price = other.getPrice();
 
+        m_Toppings.clear();
+
         for (std::size_t i = 0; i < other.getToppingCount(); ++i)
             m_Toppings.push_back(other.getToppingByIndex(i));
     }
