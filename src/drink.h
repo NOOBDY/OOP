@@ -1,6 +1,7 @@
 #ifndef DRINK_H
 #define DRINK_H
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -16,13 +17,12 @@ public:
     std::string getName() const;
     double getSweetnessLevel() const;
     int getPrice() const;
-    std::vector<Topping> getToppings() const;
     Topping getToppingByIndex(const std::size_t index) const;
     std::size_t getToppingCount() const;
 
     void addTopping(const Topping topping);
 
-    Drink operator=(const Drink &other);
+    Drink &operator=(const Drink &other) = default;
 
 private:
     std::string m_Name = "";
@@ -69,10 +69,6 @@ int Drink::getPrice() const {
     return m_Price;
 }
 
-std::vector<Topping> Drink::getToppings() const {
-    return m_Toppings;
-}
-
 Topping Drink::getToppingByIndex(const std::size_t index) const {
     std::size_t size = getToppingCount();
 
@@ -90,17 +86,6 @@ void Drink::addTopping(const Topping topping) {
     m_Toppings.push_back(topping);
     m_SweetnessLevel += topping.getSweetnessLevel();
     m_Price += topping.getPrice();
-}
-
-Drink Drink::operator=(const Drink &other) {
-    if (this != &other) {
-        m_Name = other.getName();
-        m_SweetnessLevel = other.getSweetnessLevel();
-        m_Price = other.getPrice();
-        m_Toppings = other.getToppings();
-    }
-
-    return *this;
 }
 
 #endif

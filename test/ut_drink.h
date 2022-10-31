@@ -42,6 +42,14 @@ TEST_F(DrinkTest, NormalAddTopping) {
     ASSERT_EQ(normalDrink.getToppingByIndex(1).getName(), targetName);
 }
 
+TEST_F(DrinkTest, NormalDrinkCopyConstructor) {
+    Drink targetDrink(normalDrink);
+
+    std::size_t targetCount = 1;
+
+    ASSERT_EQ(targetDrink.getToppingCount(), targetCount);
+}
+
 TEST_F(DrinkTest, NormalDrinkCopyAssignment) {
     Drink targetDrink;
     targetDrink = normalDrink;
@@ -77,6 +85,12 @@ TEST(Drink, InvalidSweetnessLevel) {
 
 TEST(Drink, InvalidPrice) {
     ASSERT_THROW(Drink("even looonger boi", 0.4, -10), std::string);
+}
+
+TEST(Drink, FuckUpCopyAssignmentAttempt) {
+    Drink a;
+    Drink b;
+    b = a;
 }
 
 #endif
