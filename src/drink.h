@@ -22,7 +22,7 @@ public:
 
     void addTopping(const Topping topping);
 
-    Drink &operator=(const Drink &other) = default;
+    Drink &operator=(const Drink &other);
 
 private:
     std::string m_Name = "";
@@ -86,6 +86,17 @@ void Drink::addTopping(const Topping topping) {
     m_Toppings.push_back(topping);
     m_SweetnessLevel += topping.getSweetnessLevel();
     m_Price += topping.getPrice();
+}
+
+Drink &Drink::operator=(const Drink &other) {
+    if (this != &other) {
+        m_Name = other.m_Name;
+        m_SweetnessLevel = other.m_SweetnessLevel;
+        m_Price = other.m_Price;
+        m_Toppings = other.m_Toppings;
+    }
+
+    return *this;
 }
 
 #endif
