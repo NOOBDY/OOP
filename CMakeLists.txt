@@ -44,7 +44,7 @@ add_executable(ut_all
     ${SRC}
 )
 target_link_libraries(ut_all
-    ${GTEST_LIBRARIES}
+    ${GTEST_LIBRARIES} pthread
 )
 target_include_directories(ut_all PRIVATE
     ${INCLUDE_DIRS}
