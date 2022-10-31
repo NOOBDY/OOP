@@ -16,6 +16,7 @@ public:
     std::string getName() const;
     double getSweetnessLevel() const;
     int getPrice() const;
+    std::vector<Topping> getToppings() const;
     Topping getToppingByIndex(const std::size_t index) const;
     std::size_t getToppingCount() const;
 
@@ -68,6 +69,10 @@ int Drink::getPrice() const {
     return m_Price;
 }
 
+std::vector<Topping> Drink::getToppings() const {
+    return m_Toppings;
+}
+
 Topping Drink::getToppingByIndex(const std::size_t index) const {
     std::size_t size = getToppingCount();
 
@@ -92,11 +97,7 @@ Drink Drink::operator=(const Drink &other) {
         m_Name = other.getName();
         m_SweetnessLevel = other.getSweetnessLevel();
         m_Price = other.getPrice();
-
-        m_Toppings.clear();
-
-        for (std::size_t i = 0; i < other.getToppingCount(); ++i)
-            m_Toppings.push_back(other.getToppingByIndex(i));
+        m_Toppings = other.getToppings();
     }
 
     return *this;
