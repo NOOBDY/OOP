@@ -36,10 +36,10 @@ Drink::Drink(const std::string name, const double sweetnessLevel,
     if (name.size() < 4)
         throw std::string("Invalid Name");
 
-    if (sweetnessLevel >= 1 || sweetnessLevel <= 0)
+    if (sweetnessLevel > 1 || sweetnessLevel < 0)
         throw std::string("Invalid Sweetness Level");
 
-    if (price <= 0)
+    if (price < 0)
         throw std::string("Invalid Price");
 
     m_Name = name;
