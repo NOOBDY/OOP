@@ -9,7 +9,7 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 #### GTest
 find_package(GTest)
 
-if(NOT GTest_FOUND)
+if(NOT GTEST_FOUND)
     # reference: https://google.github.io/googletest/quickstart-cmake.html
     include(FetchContent)
     FetchContent_Declare(
@@ -44,7 +44,7 @@ add_executable(ut_all
     ${SRC}
 )
 target_link_libraries(ut_all
-    GTest::gtest_main
+    ${GTEST_LIBRARIES}
 )
 target_include_directories(ut_all PRIVATE
     ${INCLUDE_DIRS}

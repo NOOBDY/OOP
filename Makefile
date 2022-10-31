@@ -5,7 +5,7 @@ ut: setup
 	cmake --build bin --target ut_all
 
 setup:
-	cmake -B bin
+	cmake -B bin -DCMAKE_BUILD_TYPE=Debug
 
 .PHONY: clean
 clean:
