@@ -20,6 +20,10 @@ if(NOT GTEST_FOUND)
     # For Windows: Prevent overriding the parent project's compiler/linker settings
     set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
     FetchContent_MakeAvailable(googletest)
+
+    set(GTEST_INCLUDE_DIR ${PROJECT_BINARY_DIR}/_deps/googletest-src/googletest/include)
+    set(GTEST_LIBRARIES GTest::gtest)
+    set(GTEST_MAIN_LIBRARIES GTest::gtest_main)
 endif()
 
 set(SRC
