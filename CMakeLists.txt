@@ -65,7 +65,7 @@ set(COVERAGE_EXCLUDE
     ${PROJECT_SOURCE_DIR}/build/_deps/*
     ${PROJECT_SOURCE_DIR}/test/*
 )
-if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+if(CMAKE_CXX_COMPILER_ID EQUAL "Clang")
     set(GCOVR_ADDITIONAL_ARGS
         --gcov-executable "llvm-cov gcov"
     )
