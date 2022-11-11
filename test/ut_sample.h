@@ -132,7 +132,7 @@ TEST(Sample, test_cart_set_index_with_duplicated_stuff_should_throw_exception) {
     shopping_cart.appendItem(Product("item2", 50));
     shopping_cart.appendItem(Product("item3", 500));
 
-    ASSERT_THROW(shopping_cart.setItemByIndex(1, Product("item3", 50)),
+    ASSERT_THROW(shopping_cart.setItemByIndex(1, Product("item3", 500)),
                  std::string);
 }
 

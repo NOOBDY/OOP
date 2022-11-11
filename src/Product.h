@@ -28,7 +28,7 @@ Product::Product(std::string name, int price) {
 }
 
 bool Product::operator==(const Product &other) const {
-    return m_Name == other.m_Name;
+    return m_Name == other.m_Name && m_Price == other.m_Price;
 }
 
 #endif
