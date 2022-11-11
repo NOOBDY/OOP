@@ -35,13 +35,6 @@ ShoppingCart::ShoppingCart(int item_list_size, Product item_list[]) {
     }
 }
 
-Product ShoppingCart::getItemByIndex(std::size_t index) {
-    if (index >= m_Products.size())
-        throw std::string("Index Ouf of Range");
-
-    return m_Products[index];
-}
-
 ShoppingCart &ShoppingCart::operator+(const ShoppingCart &other) {
     for (const auto &i : other.m_Products) {
         bool dup = false;
@@ -65,6 +58,13 @@ ShoppingCart &ShoppingCart::operator-(const ShoppingCart &other) {
     }
 
     return *this;
+}
+
+Product ShoppingCart::getItemByIndex(std::size_t index) {
+    if (index >= m_Products.size())
+        throw std::string("Index Ouf of Range");
+
+    return m_Products[index];
 }
 
 void ShoppingCart::setItemByIndex(std::size_t index, Product product) {

@@ -20,7 +20,7 @@ private:
 };
 
 Product::Product(std::string name, int price) {
-    if (name.size() < 4 || price < 0)
+    if (name.size() < 4 || price <= 0)
         throw std::string("Invalid Value");
 
     m_Name = name;
