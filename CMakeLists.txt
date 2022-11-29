@@ -27,15 +27,17 @@ if(NOT GTEST_FOUND)
 endif()
 
 set(SRC
-    src/Product.h
-    src/ShoppingCart.h
+    src/alcohol.h
+    src/sour.h
+    src/tequila.h
 )
 
 set(UT_SRC
     test/ut_main.cpp
 
-    test/test_util.h
-    test/ut_sample.h
+    test/ut_alcohol.h
+    test/ut_sour.h
+    test/ut_tequila.h
 )
 
 set(INCLUDE_DIRS
@@ -59,20 +61,20 @@ target_compile_options(ut_all PRIVATE
 include(GoogleTest)
 gtest_discover_tests(ut_all)
 
-# include(CodeCoverage)
-# set(CODE_COVERAGE_VERBOSE ON)
-# set(COVERAGE_EXCLUDE
-#     ${PROJECT_SOURCE_DIR}/build/_deps/*
-#     ${PROJECT_SOURCE_DIR}/test/*
-# )
-# if(CMAKE_CXX_COMPILER_ID EQUAL "Clang")
-#     set(GCOVR_ADDITIONAL_ARGS
-#         --gcov-executable "llvm-cov gcov"
-#     )
-# endif()
-# append_coverage_compiler_flags()
-# setup_target_for_coverage_gcovr_html(
-#     NAME ut_all_coverage
-#     DEPENDENCIES ut_all
-#     EXCLUDE ${COVERAGE_EXCLUDE}
-# )
+include(CodeCoverage)
+set(CODE_COVERAGE_VERBOSE ON)
+set(COVERAGE_EXCLUDE
+    ${PROJECT_SOURCE_DIR}/build/_deps/*
+    ${PROJECT_SOURCE_DIR}/test/*
+)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    set(GCOVR_ADDITIONAL_ARGS
+        --gcov-executable "llvm-cov gcov"
+    )
+endif()
+append_coverage_compiler_flags()
+setup_target_for_coverage_gcovr_html(
+    NAME ut_all_coverage
+    DEPENDENCIES ut_all
+    EXCLUDE ${COVERAGE_EXCLUDE}
+)

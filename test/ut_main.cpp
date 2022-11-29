@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 
-#include "ut_sample.h"
+#include "ut_alcohol.h"
+#include "ut_sour.h"
+#include "ut_tequila.h"
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
