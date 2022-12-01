@@ -4,6 +4,7 @@
 #include <string>
 
 using String = std::string;
+using namespace std;
 
 class Alcohol {
 public:
