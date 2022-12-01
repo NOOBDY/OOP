@@ -7,8 +7,8 @@
 
 #include <gtest/gtest.h>
 
-#include "sour.h"
-#include "tequila.h"
+#include "../src/sour.h"
+#include "../src/tequila.h"
 
 TEST(Alcohol, test_polymorphism) {
     std::vector<std::shared_ptr<Alcohol>> drinks;

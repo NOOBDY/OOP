@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-#include "tequila.h"
+#include "../src/tequila.h"
 
 class TestTequila : public ::testing::Test {
 public:

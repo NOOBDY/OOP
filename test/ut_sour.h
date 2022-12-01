@@ -3,7 +3,7 @@
 
 #include <gtest/gtest.h>
 
-#include "sour.h"
+#include "../src/sour.h"
 
 class TestSour : public ::testing::Test {
 public:
