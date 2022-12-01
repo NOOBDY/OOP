@@ -24,7 +24,7 @@ TEST_F(TestTequila, test_normal_sour_content) {
 
 TEST_F(TestTequila, test_dilute) {
     normalTequila.dilute();
-    ASSERT_NEAR(normalTequila.get_alcohol_content(), 0.025, 0.01);
+    ASSERT_NEAR(normalTequila.get_alcohol_content(), 0.475, 0.01);
 }
 
 TEST_F(TestTequila, test_join) {

@@ -15,7 +15,7 @@ public:
 };
 
 void Sour::dilute() {
-    m_Content *= 0.3;
+    m_Content *= 0.7;
 }
 
 Sour Sour::operator+(const Sour &other) {

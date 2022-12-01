@@ -24,7 +24,7 @@ TEST_F(TestSour, test_normal_sour_content) {
 
 TEST_F(TestSour, test_dilute) {
     normalSour.dilute();
-    ASSERT_NEAR(normalSour.get_alcohol_content(), 0.15, 0.01);
+    ASSERT_NEAR(normalSour.get_alcohol_content(), 0.35, 0.01);
 }
 
 TEST_F(TestSour, test_join) {

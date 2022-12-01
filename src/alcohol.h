@@ -2,6 +2,7 @@
 #define ALCOHOL_H
 
 #include <string>
+#include <stdexcept>
 
 using String = std::string;
 using namespace std;
@@ -26,7 +27,7 @@ protected:
 
 Alcohol::Alcohol(String name, int price, double content) {
     if (name.length() == 0 || price < 0 || content > 1 || content < 0)
-        throw std::string("Invalid value");
+        throw std::invalid_argument("Invalid argument");
 
     m_Name = name;
     m_Price = price;

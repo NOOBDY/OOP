@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <stdexcept>
 
 #include <gtest/gtest.h>
 
@@ -20,12 +21,12 @@ TEST(Alcohol, test_polymorphism) {
         drink->dilute();
     }
 
-    ASSERT_NEAR(drinks[0]->get_alcohol_content(), 0.09, 0.001);
-    ASSERT_NEAR(drinks[1]->get_alcohol_content(), 0.03, 0.001);
+    ASSERT_NEAR(drinks[0]->get_alcohol_content(), 0.21, 0.001);
+    ASSERT_NEAR(drinks[1]->get_alcohol_content(), 0.57, 0.001);
 }
 
 TEST(Alcohol, test_invalid_alcohol) {
-    ASSERT_THROW(Sour s("", -10, 10), std::string);
+    ASSERT_THROW(Sour s("", -10, 10), std::invalid_argument);
 }
 
 #endif

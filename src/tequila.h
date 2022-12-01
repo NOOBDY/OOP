@@ -15,7 +15,7 @@ public:
 };
 
 void Tequila::dilute() {
-    m_Content *= 0.05;
+    m_Content *= 0.95;
 }
 
 Tequila Tequila::operator+(const Tequila &other) {
