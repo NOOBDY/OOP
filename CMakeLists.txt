@@ -30,6 +30,8 @@ set(SRC
     src/alcohol.h
     src/sour.h
     src/tequila.h
+    src/algorithm.h
+    src/order.h
 )
 
 set(UT_SRC
