@@ -36,7 +36,7 @@ public:
             m_Cakes.begin(), m_Cakes.end(), result,
             [](std::string str, T *cake) { return str + cake->to_string(); });
 
-        result += "| -------------------- | ---------- | ---------- |\n";
+        result += "| -------------------- | ---------- | ---------- |";
 
         return result;
     }

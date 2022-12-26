@@ -51,7 +51,7 @@ TEST_F(TestCakeShowcase, test_to_string) {
                          "| ChocolateCake        |         20 |         30 |\n"
                          "| HoneyCake            |         40 |         20 |\n"
                          "| GeodeCake            |         50 |         10 |\n"
-                         "| -------------------- | ---------- | ---------- |\n";
+                         "| -------------------- | ---------- | ---------- |";
 
     ASSERT_EQ(m_TestCakeShowcase->to_string(), result);
 }
