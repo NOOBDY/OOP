@@ -27,19 +27,21 @@ if(NOT GTEST_FOUND)
 endif()
 
 set(SRC
-    src/alcohol.h
-    src/sour.h
-    src/tequila.h
-    src/algorithm.h
-    src/order.h
+    src/fmt.h
+    src/cake.h
+    src/cake_showcase.h
+    src/chocolate_cake.h
+    src/honey_cake.h
+    src/geode_cake.h
 )
 
 set(UT_SRC
     test/ut_main.cpp
 
-    test/ut_alcohol.h
-    test/ut_sour.h
-    test/ut_tequila.h
+    test/ut_cake_showcase.h
+    test/ut_chocolate_cake.h
+    test/ut_honey_cake.h
+    test/ut_geode_cake.h
 )
 
 set(INCLUDE_DIRS
@@ -58,7 +60,7 @@ target_include_directories(ut_all PRIVATE
     ${INCLUDE_DIRS}
 )
 target_compile_options(ut_all PRIVATE
-    -Wall -pedantic
+    -Wall -pedantic -gdwarf-4
 )
 include(GoogleTest)
 gtest_discover_tests(ut_all)
