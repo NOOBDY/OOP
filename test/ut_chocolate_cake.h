@@ -29,7 +29,7 @@ TEST_F(TestChocolateCake, test_chocolate_cake_get_sweet) {
 TEST_F(TestChocolateCake, test_chocolate_cake_get_total) {
     int result = 3;
 
-    ASSERT_EQ(Cake::get_total(), result);
+    ASSERT_EQ(ChocolateCake::get_total(), result);
 }
 
 TEST_F(TestChocolateCake, test_chocolate_cake_to_string) {

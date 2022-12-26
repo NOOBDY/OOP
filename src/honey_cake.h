@@ -10,6 +10,10 @@
 class HoneyCake : public Cake {
 public:
     using Cake::Cake;
+    HoneyCake(int price, int sweet) : Cake(price, sweet) { m_Total++; }
+    ~HoneyCake() override { m_Total--; }
+
+    static int get_total() { return m_Total; }
 
     std::string to_string() const override;
 

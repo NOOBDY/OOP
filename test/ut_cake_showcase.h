@@ -72,4 +72,10 @@ TEST_F(TestCakeShowcase, test_cake_total) {
     ASSERT_EQ(Cake::get_total(), result);
 }
 
+TEST_F(TestCakeShowcase, test_chocolate_cake_total) {
+    int result = 1;
+
+    ASSERT_EQ(ChocolateCake::get_total(), result);
+}
+
 #endif
