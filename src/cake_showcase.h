@@ -32,8 +32,9 @@ public:
             "| CakeName             | Price      | Sweet      |\n"
             "| -------------------- | ---------- | ---------- |\n";
 
-        for (const auto &cake : m_Cakes)
-            result += cake->to_string();
+        result = std::accumulate(
+            m_Cakes.begin(), m_Cakes.end(), result,
+            [](std::string str, T *cake) { return str + cake->to_string(); });
 
         result += "| -------------------- | ---------- | ---------- |\n";
 

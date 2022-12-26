@@ -6,6 +6,11 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
+if(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -gdwarf-4")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -gdwarf-4")
+endif()
+
 #### GTest
 find_package(GTest)
 
@@ -60,7 +65,7 @@ target_include_directories(ut_all PRIVATE
     ${INCLUDE_DIRS}
 )
 target_compile_options(ut_all PRIVATE
-    -Wall -pedantic -gdwarf-4
+    -Wall -pedantic
 )
 include(GoogleTest)
 gtest_discover_tests(ut_all)
