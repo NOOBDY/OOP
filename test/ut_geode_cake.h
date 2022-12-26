@@ -33,7 +33,7 @@ TEST_F(TestGeodeCake, test_geode_cake_get_total) {
 }
 
 TEST_F(TestGeodeCake, test_geode_cake_to_string) {
-    std::string result = "| GeodeCake            |         45 |         50 |\n";
+    std::string result = "| GeodeCake            |         45 |         50 |";
 
     ASSERT_EQ(testCake.to_string(), result);
 }

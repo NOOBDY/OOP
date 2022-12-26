@@ -32,9 +32,10 @@ public:
             "| CakeName             | Price      | Sweet      |\n"
             "| -------------------- | ---------- | ---------- |\n";
 
-        result = std::accumulate(
-            m_Cakes.begin(), m_Cakes.end(), result,
-            [](std::string str, T *cake) { return str + cake->to_string(); });
+        result = std::accumulate(m_Cakes.begin(), m_Cakes.end(), result,
+                                 [](std::string str, T *cake) {
+                                     return str + cake->to_string() + "\n";
+                                 });
 
         result += "| -------------------- | ---------- | ---------- |";
 

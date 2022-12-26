@@ -24,7 +24,7 @@ private:
 int ChocolateCake::m_Total = 0;
 
 std::string ChocolateCake::to_string() const {
-    return fmt("| ChocolateCake        |         %2d |         %2d |\n", //
+    return fmt("| ChocolateCake        |         %2d |         %2d |", //
                m_Price, m_Sweet);
 }
 

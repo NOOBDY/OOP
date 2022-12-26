@@ -24,7 +24,7 @@ private:
 int GeodeCake::m_Total = 0;
 
 std::string GeodeCake::to_string() const {
-    return fmt("| GeodeCake            |         %2d |         %2d |\n", //
+    return fmt("| GeodeCake            |         %2d |         %2d |", //
                m_Price, m_Sweet);
 }
 

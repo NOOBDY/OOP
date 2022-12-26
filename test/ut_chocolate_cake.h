@@ -33,7 +33,7 @@ TEST_F(TestChocolateCake, test_chocolate_cake_get_total) {
 }
 
 TEST_F(TestChocolateCake, test_chocolate_cake_to_string) {
-    std::string result = "| ChocolateCake        |         45 |         50 |\n";
+    std::string result = "| ChocolateCake        |         45 |         50 |";
 
     ASSERT_EQ(testCake.to_string(), result);
 }

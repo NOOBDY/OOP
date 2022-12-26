@@ -24,7 +24,7 @@ private:
 int HoneyCake::m_Total = 0;
 
 std::string HoneyCake::to_string() const {
-    return fmt("| HoneyCake            |         %2d |         %2d |\n", //
+    return fmt("| HoneyCake            |         %2d |         %2d |", //
                m_Price, m_Sweet);
 }
 

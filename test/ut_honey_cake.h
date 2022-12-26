@@ -33,7 +33,7 @@ TEST_F(TestHoneyCake, test_honey_cake_get_total) {
 }
 
 TEST_F(TestHoneyCake, test_honey_cake_to_string) {
-    std::string result = "| HoneyCake            |         45 |         50 |\n";
+    std::string result = "| HoneyCake            |         45 |         50 |";
 
     ASSERT_EQ(testCake.to_string(), result);
 }
