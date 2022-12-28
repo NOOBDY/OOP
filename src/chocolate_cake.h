@@ -12,7 +12,7 @@ public:
     ChocolateCake(int price, int sweet);
     ~ChocolateCake() override { m_Count--; }
 
-    static int get_count() { return m_Count; }
+    static int get_count();
 
     std::string to_string() const override;
 
@@ -29,6 +29,10 @@ ChocolateCake::ChocolateCake(int price, int sweet) : Cake(price, sweet) {
 std::string ChocolateCake::to_string() const {
     return fmt("| ChocolateCake        |         %2d |         %2d |", //
                m_Price, m_Sweet);
+}
+
+int ChocolateCake::get_count() {
+    return m_Count;
 }
 
 #endif
