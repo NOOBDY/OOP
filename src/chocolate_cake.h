@@ -9,8 +9,7 @@
 
 class ChocolateCake : public Cake {
 public:
-    using Cake::Cake;
-    ChocolateCake(int price, int sweet) : Cake(price, sweet) { m_Total++; }
+    ChocolateCake(int price, int sweet);
     ~ChocolateCake() override { m_Total--; }
 
     static int get_count() { return m_Total; }
@@ -22,6 +21,10 @@ private:
 };
 
 int ChocolateCake::m_Total = 0;
+
+ChocolateCake::ChocolateCake(int price, int sweet) : Cake(price, sweet) {
+    m_Total++;
+}
 
 std::string ChocolateCake::to_string() const {
     return fmt("| ChocolateCake        |         %2d |         %2d |", //

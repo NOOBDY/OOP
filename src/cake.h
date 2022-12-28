@@ -6,7 +6,7 @@
 class Cake {
 public:
     Cake() = delete;
-    Cake(int price, int sweet) : m_Price(price), m_Sweet(sweet) { m_Total++; }
+    Cake(int price, int sweet);
     virtual ~Cake() { m_Total--; }
 
     virtual int get_price() const { return m_Price; }
@@ -24,5 +24,9 @@ protected:
 };
 
 int Cake::m_Total = 0;
+
+Cake::Cake(int price, int sweet) : m_Price(price), m_Sweet(sweet) {
+    m_Total++;
+}
 
 #endif
