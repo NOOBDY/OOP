@@ -9,19 +9,22 @@
 
 class GeodeCake : public Cake {
 public:
-    using Cake::Cake;
-    GeodeCake(int price, int sweet) : Cake(price, sweet) { m_Total++; }
-    ~GeodeCake() override { m_Total--; }
+    GeodeCake(int price, int sweet);
+    ~GeodeCake() override { m_Count--; }
 
-    static int get_count() { return m_Total; }
+    static int get_count() { return m_Count; }
 
     std::string to_string() const override;
 
 private:
-    static int m_Total;
+    static int m_Count;
 };
 
-int GeodeCake::m_Total = 0;
+int GeodeCake::m_Count = 0;
+
+GeodeCake::GeodeCake(int price, int sweet) : Cake(price, sweet) {
+    m_Count++;
+}
 
 std::string GeodeCake::to_string() const {
     return fmt("| GeodeCake            |         %2d |         %2d |", //

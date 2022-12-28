@@ -10,20 +10,20 @@
 class ChocolateCake : public Cake {
 public:
     ChocolateCake(int price, int sweet);
-    ~ChocolateCake() override { m_Total--; }
+    ~ChocolateCake() override { m_Count--; }
 
-    static int get_count() { return m_Total; }
+    static int get_count() { return m_Count; }
 
     std::string to_string() const override;
 
 private:
-    static int m_Total;
+    static int m_Count;
 };
 
-int ChocolateCake::m_Total = 0;
+int ChocolateCake::m_Count = 0;
 
 ChocolateCake::ChocolateCake(int price, int sweet) : Cake(price, sweet) {
-    m_Total++;
+    m_Count++;
 }
 
 std::string ChocolateCake::to_string() const {
