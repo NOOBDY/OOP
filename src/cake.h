@@ -5,7 +5,6 @@
 
 class Cake {
 public:
-    Cake() = delete;
     Cake(int price, int sweet);
     virtual ~Cake() { m_Total--; }
 
@@ -20,6 +19,7 @@ protected:
     int m_Price;
     int m_Sweet;
 
+private:
     static int m_Total;
 };
 
