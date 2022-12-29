@@ -6,6 +6,8 @@
 #include <numeric>
 #include <stdexcept>
 
+#include "fmt.h"
+
 #include "cake.h"
 
 template <typename T>
@@ -28,26 +30,19 @@ public:
     }
 
     std::string to_string() {
-        std::string result =
-            "| CakeName             | Price      | Sweet      |\n"
-            "| -------------------- | ---------- | ---------- |\n";
-
-        result = std::accumulate(m_Cakes.begin(), m_Cakes.end(), result,
-                                 [](std::string str, T *cake) {
-                                     return str + cake->to_string() + "\n";
-                                 });
-
-        result += "| -------------------- | ---------- | ---------- |";
-
-        return result;
+        return fmt("| CakeName             | Price      | Sweet      |\n"
+                   "| -------------------- | ---------- | ---------- |\n"
+                   "%s"
+                   "| -------------------- | ---------- | ---------- |",
+                   std::accumulate(m_Cakes.begin(), m_Cakes.end(),
+                                   std::string(),
+                                   [](std::string str, T *cake) {
+                                       return str + cake->to_string() + "\n";
+                                   })
+                       .c_str());
     }
 
-    T *operator[](int index) {
-        if (index >= m_Cakes.size())
-            throw std::out_of_range("Index out of range");
-
-        return m_Cakes[index];
-    }
+    T *operator[](int index) { return m_Cakes.at(index); }
 
 private:
     std::vector<T *> m_Cakes;
