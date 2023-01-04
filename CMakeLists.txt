@@ -32,21 +32,16 @@ if(NOT GTEST_FOUND)
 endif()
 
 set(SRC
-    src/fmt.h
-    src/cake.h
-    src/cake_showcase.h
-    src/chocolate_cake.h
-    src/honey_cake.h
-    src/geode_cake.h
+    src/sandwich.h
+    src/beef_sandwich.h
+    src/sweet_sandwich.h
+    src/sandwich_factory.h
 )
 
 set(UT_SRC
     test/ut_main.cpp
 
-    test/ut_cake_showcase.h
-    test/ut_chocolate_cake.h
-    test/ut_honey_cake.h
-    test/ut_geode_cake.h
+    test/ut_sandwich.h
 )
 
 set(INCLUDE_DIRS
