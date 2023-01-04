@@ -2,6 +2,7 @@
 #define SANDWICH_H
 
 #include <set>
+#include <stdexcept>
 
 class Sandwich {
 public:
@@ -24,6 +25,9 @@ protected:
 std::set<int> Sandwich::m_IDs;
 
 Sandwich::Sandwich(int price, int ID) : m_Price(price), m_ID(ID) {
+    if (price < 0)
+        throw std::invalid_argument("invalid argument");
+
     m_IDs.insert(ID);
 }
 
