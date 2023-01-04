@@ -28,7 +28,7 @@ TEST_F(TestSandwich, test_get_price) {
 TEST_F(TestSandwich, test_get_id) {
     int target = 4;
 
-    ASSERT_EQ(testSandwich3->get_ID(), target);
+    ASSERT_EQ(testSandwich3->get_id(), target);
 }
 
 TEST_F(TestSandwich, test_sandwich_static_methods) {
